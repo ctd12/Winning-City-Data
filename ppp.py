@@ -1,5 +1,8 @@
 import pandas as pd
 import os
 
-new_df = pd.DataFrame
-print(new_df)
+pwd = os.getcwd()
+print(pwd)
+
+filepath = pwd + "/case1.csv"
+print(filepath)
