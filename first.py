@@ -2,7 +2,8 @@ import pandas as pd
 import os
 
 pwd = os.getcwd()
-print(pwd)
 
 filepath = pwd + "/case1.csv"
-print(filepath)
+
+first_import = pd.read_csv(filepath, nrows = 10)
+print(first_import)
