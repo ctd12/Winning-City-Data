@@ -2,5 +2,5 @@ These data sets were downloaded from Kaggle. They contain data for North America
 
 The following languages will be used:
 
-- PYTHON
+- Python
     - Pandas
