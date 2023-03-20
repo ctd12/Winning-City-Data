@@ -1,9 +1,7 @@
-# %%
 import pandas as pd
 import os
 import ast
 
-# %%
 # Importing the CSV and saving it as a Pandas DataFrame
 
 pwd = os.getcwd()
@@ -19,7 +17,6 @@ city_data
 # "values" column: list of dictionaries; each dictionary is a year (ascending) that a team from that city won a championship
 # "seasons" column: how many seasons of each sports league have taken place in the city
 
-# %%
 # Each "values" value is a string, it needs to be a list of dictionaries
 
 # Remove the brackets at the beginning of each string
@@ -28,8 +25,6 @@ def remove_brackets(string):
     remove_back = remove_front.replace(']', '')
     return remove_back
 
-
-# %%
 # Turn the string into a list, separated by dictionary brackets.
 
 def string_to_list(string):
@@ -44,8 +39,6 @@ def string_to_list(string):
             new_string += i
     return new_list
 
-
-# %%
 # Remove the ', ' that is at the beginning of every string after the first one in the list.
 
 def remove_comma_space(team_list):
@@ -58,8 +51,6 @@ def remove_comma_space(team_list):
             new_team_list.append(new_team)
     return new_team_list
 
-
-# %%
 # Finally, transform each item in the list from a string into a dictionary. The dictionaries can now be manipulated.
 
 def strings_to_dicts(list_of_strings):
@@ -69,8 +60,6 @@ def strings_to_dicts(list_of_strings):
         list_of_dicts.append(result)
     return list_of_dicts
 
-
-# %%
 # Replace the values column (string values) with a new values column that contains lists of dictionaries. 
 # Each dictionary contains information about a team that won a championship from that city (year, team, and sport).
 
@@ -88,7 +77,6 @@ city_data['values'] = champions
 city_data['# of City Championships'] = city_data['values'].str.len()
 city_data
 
-# %%
 # Plot relationship of population vs. # of championships
 
 import matplotlib.pyplot as plt
@@ -103,14 +91,12 @@ plt.ylabel('Championships', fontweight = 'bold')
 plt.title('Relationship between Population and Championships', fontweight = 'bold')
 plt.show()
 
-# %%
 # Remove the outliers to have a better visual
 
 x_sorted = np.sort(x)
 x_high_to_low = x_sorted[::-1]
 print(x_high_to_low[0:10])
 
-# %%
 x_high_one = x_high_to_low[0]
 x_high_two = x_high_to_low[1]
 
@@ -129,7 +115,6 @@ plt.ylabel('Championships', fontweight = 'bold')
 plt.title('Relationship between Population and Championships', fontweight = 'bold')
 plt.show()
 
-# %%
 # This shows that when removing the largest two outliers in terms of population
 # there is not direct correlation between the population of a city and the total sports championships it has.
 # However, cities with larger populations tend to have at least one championship.
@@ -137,10 +122,7 @@ plt.show()
 
 np.corrcoef(x, y)
 
-# %%
 np.corrcoef(x2, y2)
-
-# %%
 
 # Next is an analysis of the amount of National Hockey League champoinships each city has gotten.
 
@@ -161,7 +143,6 @@ for champ_list in all_champs:
 city_data['NHL Championships'] = nhl_champs
 city_data
 
-# %%
 # Creating a new data frame to analyze NHL championships per city
 
 nhl_data = city_data[['City', '# of City Championships', 'NHL Championships']]
@@ -181,7 +162,6 @@ nhl_totals = nhl_v2[mask]
 nhl_totals = nhl_totals.sort_values(by = ['NHL Percentage of Total'], ascending = False)
 nhl_totals
 
-# %%
 # Creating a bar graph to display the top 10 cities in terms of the highest percentages of NHL titles out of total
 
 cities = nhl_totals['City']
